@@ -3,9 +3,13 @@ Fermenter
 
 A Raspberry Pi powered fermentation chamber for brewing beer with a simple and slick web interface.
 
+[![screenshot](docs/start-brew.png)](#start-brew)
 
-Long Installation Instructions
-============
+## Long Installation Instructions ##
+
+These are the instructions for setting up the app if you're starting from a stock Rasbian Wheezy Linux install.
+To find out how to install Rasbian Wheezy refer to the instructions on http://www.raspberrypi.org/downloads
+
 
 ### Install OS packages: ###
 
@@ -33,16 +37,39 @@ Test that the webserver is working on port 8000 before proceeding, Ctrl-C to sto
 
 I'm using nginx infront of gunicorn (managed by supervisord). The config files are included.
 
-    sudo python setup/install.py
+    sudo bash setup/install.sh
 
-set hostname on raspberry pi:
+### Optional Steps: ###
+
+Set hostname on raspberry pi:
 
     sudo vim /etc/hostname
+    sudo vim /etc/hosts
 
-replace 'raspberrypi' with 'fermenter'
+Replace 'raspberrypi' with 'fermenter' in both files.
+
+-------
+
+Set a static IP:
+
+    sudo vim /etc/network/interfaces
+
+Remove the existing eth0 line and add these:
+
+    iface eth0 inet static
+    address 192.168.1.222
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+
+Point to this static IP address in your hosts file so that you can connect to fermenter.local rather than 192.168.1.??
+
+### Finish ###
 
 Reboot
 
     sudo reboot
 
 
+## Quick Installation ##
+
+SD card disk image for the Raspberry Pi with everything configured is coming soon...

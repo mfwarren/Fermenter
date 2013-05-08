@@ -15,7 +15,7 @@ server {
   error_log /var/log/nginx/fermenter_error.log;
 
   # try to serve a static file and if it doesn't exist, pass to gunicorn
-  try_files $uri @gunicorn;
+  try_files /Fermenter/$uri @gunicorn;
 
   # rules for gunicorn
   location @gunicorn {
