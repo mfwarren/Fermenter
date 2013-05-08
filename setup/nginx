@@ -1,0 +1,30 @@
+# upstream server for gunicorn
+upstream gunicorn {
+  server localhost:8000;
+}
+
+# nginx server for the host
+server {
+  listen 80;
+
+  server_name fermenter.local www.fermenter.local;
+
+  root /home/pi/Fermenter;
+
+  access_log /var/log/nginx/fermenter_access.log;
+  error_log /var/log/nginx/fermenter_error.log;
+
+  # try to serve a static file and if it doesn't exist, pass to gunicorn
+  try_files $uri @gunicorn;
+
+  # rules for gunicorn
+  location @gunicorn {
+    proxy_pass http://gunicorn;
+    proxy_redirect off;
+    proxy_read_timeout 5m;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Fowarded-For $proxy_add_x_forwarded_for;
+  }
+}
+
