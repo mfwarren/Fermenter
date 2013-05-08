@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block page_body %}
+<div class="container-fluid">
+
+{% if not current_brew %}
+
+<h1>Start A Brew</h1>
+<form action="/start-brew/" method="post" class="form-horizontal">
+	{% csrf_token %}
+	{% include 'form_layout.html' with form=brew_form %}
+	<div class="control-group">
+		<div class="controls">
+			<button class="btn btn-primary" type="submit"><i class="icon-beer"></i> Start Brewing</button>
+		</div>
+	</div>
+</form>
+
+{% else %}
+	<h1>Currently Brewing {{current_brew.beer_type}}</h1>
+	<div class="pull-right">
+		<button type="button" class="btn" id="finish-beer">Finish This Brew</button>
+	</div>
+	<p>Started on: {{current_brew.start_date}}</p>
+	<h2>Chart of Temperatures</h2>
+	<div id="temp-chart"></div>
+	<h2>Notes:</h2>
+	<pre>{{current_brew.notes}}</pre>
+
+{% endif %}
+
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% if current_brew %}
+<script>
+	$("#finish-beer").click(function(){
+		alert("BEER IS FINISHED.  The Fermenter will not manage temperature until there is an active Brew.");
+		finishBrew();
+	});
+
+	var graph = new Rickshaw.Graph( {
+  element: document.querySelector('#temp-chart'),
+	renderer: 'line',
+  series: [
+    {
+      color: 'goldenrod',
+      data: [ { x: 0, y: 23}, { x: 1, y: 15 }, { x: 2, y: 79 } ]
+    }, {
+      color: 'lightblue',
+      data: [ { x: 0, y: 30}, { x: 1, y: 20 }, { x: 2, y: 64 } ]
+    }
+  ]
+} );
+
+graph.render();
+
+var time = new Rickshaw.Fixtures.Time();
+var seconds = time.unit('second');
+
+var xAxis = new Rickshaw.Graph.Axis.Time({
+    graph: graph,
+    timeUnit: seconds
+});
+
+xAxis.render();
+
+</script>
+{% endif %}
+{% endblock %}

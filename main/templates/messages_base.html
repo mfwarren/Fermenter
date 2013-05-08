@@ -1,0 +1,7 @@
+<div id="messages" class="messages" {% if not messages %}style="display:none"{%endif%}>
+	<ul style="list-style-type:none;padding:16px 5px;margin:0">
+	{% for message in messages %}
+		<li style="margin-top: 2px;"><div class="sprite {{message.tags}}" style="float:left; margin:2px 8px 0 2px;"></div>{{ message.message|safe }} {% if message.is_persistent %}<a style="font-size:10px;color:#06E; float:right; margin-top:2px;" href="{% url message_mark_read message.pk %}">Dismiss</a>{% endif %}</li>
+	{% endfor %}
+	</ul>
+</div>

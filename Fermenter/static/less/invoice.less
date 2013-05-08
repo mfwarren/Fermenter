@@ -1,0 +1,82 @@
+.invoice-preview {
+    .box-shadow(2px 2px 8px #aaa);
+    .border-radius(6px);
+    border:1px solid #ddd;
+    width:730px;
+    margin:20px auto;
+    padding:20px;
+
+    .top-section {
+        position:relative;
+        margin-bottom:7px;
+        padding-bottom: 10px;
+        border-bottom:1px solid #ccc;
+        .logo {
+            float:left;
+        }
+    }
+    pre {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .from, .to {
+        margin-bottom: 10px;
+    }
+    .balance {
+        float:none;
+    }
+    .table {
+        display:table;
+        width:100%;
+        border-collapse:collapse;
+        .tableHeader {
+            font-weight:bold;
+            border:1px solid #ccc;
+        }
+        .tableHeader, .tableRow {
+            display:table-row;
+            > div {
+                display:table-cell;
+                padding: 4px 6px;
+            }
+        }
+    }
+    .lineTotal {width:100px;text-align:right;}
+    .totalLabel {text-align:right;}
+
+}
+
+.payment-options li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#payments-fees .control-group {
+    margin-right: 10px;
+}
+#pad-form label,
+#creditBankAccountForm label {
+    font-size: 85%;
+}
+#pad-form input#id_pad-name,
+#creditBankAccountForm input#id_pad-name {
+    width:220px;
+}
+#po, #due-on {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: bold;
+    vertical-align: top;
+}
+#commentBox {
+    margin-top: -10px;
+}
+#commentBox pre{
+    margin: 0px 0px 10px;
+    padding:4px 6px;
+    border: 1px solid #ccc;
+}
+.font-11 {
+    font-size: 100%;
+    font-size: 11px;
+}
+

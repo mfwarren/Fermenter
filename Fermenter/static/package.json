@@ -1,0 +1,11 @@
+{
+    "name": "Fermenter"
+  , "description": "fermenter less files for website."
+  , "version": "0.1.0"
+  , "keywords": ["fermenter", "halotis", "homebrew", "css"]
+  , "homepage": "https://www.halotis.com/"
+  , "author": "Matt Warren"
+  , "devDependencies": {
+      "recess": "1.1.6"
+  }
+}
