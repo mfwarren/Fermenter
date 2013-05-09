@@ -9,3 +9,5 @@ cp setup/nginx /etc/nginx/sites-available/fermenter
 
 ln -s /etc/nginx/sites-available/fermenter /etc/nginx/sites-enabled/fermenter
 service nginx restart
+
+crontab setup/cron.txt
