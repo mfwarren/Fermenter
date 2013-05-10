@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 .main-nav {
-	position: absolute;
+	position: fixed;
 	top:@topbarHeight;
 	left:0px;
 	bottom:0px;
@@ -62,12 +62,18 @@
     position:static;
     display:none;
     width:auto;
+    margin-left:-20px;
+    margin-right:-20px;
   }
   .outer-content {
       position:static;
   }
   .main-nav section {
     position: static;
+  }
+  body{
+      margin-left:0;
+      margin-top:0;
   }
 
 }

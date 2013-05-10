@@ -2,52 +2,6 @@
 // Tables
 // --------------------------------------------------
 
-@keyframes rotatedown {
-    from {.rotate(0deg);}
-    to {.rotate(90deg);}
-}
-@-o-keyframes rotatedown {
-    from {.rotate(0deg);}
-    to {.rotate(90deg);}
-}
-@-moz-keyframes rotatedown {
-    from {.rotate(0deg);}
-    to {.rotate(90deg);}
-}
-@-webkit-keyframes rotatedown {
-    from {.rotate(0deg);}
-    to {.rotate(90deg);}
-}
-@keyframes rotateup {
-    from {.rotate(90deg);}
-    to {.rotate(0deg);}
-}
-@-webkit-keyframes rotateup {
-    from {.rotate(90deg);}
-    to {.rotate(0deg);}
-}
-@-o-keyframes rotateup {
-    from {.rotate(90deg);}
-    to {.rotate(0deg);}
-}
-@-moz-keyframes rotateup {
-    from {.rotate(90deg);}
-    to {.rotate(0deg);}
-}
-.open-row .icon-caret-right{
-    animation: rotatedown 0.2s;
-    -moz-animation: rotatedown 0.2s; /* Firefox */
-    -webkit-animation: rotatedown 0.2s; /* Safari and Chrome */
-    -o-animation: rotatedown 0.2s; /* Opera */
-    .rotate(90deg);
-}
-.icon-caret-right{
-    animation: rotateup 0.2s;
-    -moz-animation: rotateup 0.2s; /* Firefox */
-    -webkit-animation: rotateup 0.2s; /* Safari and Chrome */
-    -o-animation: rotateup 0.2s; /* Opera */
-    .rotate(0deg);
-}
 
 // BASE TABLES
 // -----------------
@@ -55,83 +9,28 @@
 table {
   max-width: 100%;
   background-color: @tableBackground;
-  border-collapse: seperate;
+  border-collapse: collapse;
   border-spacing: 0;
 }
 
 // BASELINE STYLES
 // ---------------
 
-
 .table {
   width: 100%;
   margin-bottom: @baseLineHeight;
-  // Anchors
-  a {
-    text-decoration: underline;
-  }
   // Cells
   th,
   td {
-    padding: 5px 10px; // 8px;
+    padding: 8px;
     line-height: @baseLineHeight;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid @tableBorder;
   }
   th {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    font-weight: normal;
-    color: #fff;
-    text-shadow: #555;
-    #gradient > .vertical(@tableHeaderBackground, darken(@tableHeaderBackground, 5%))
+    font-weight: bold;
   }
-  tr:last-child td {
-    border-bottom: 1px solid @tableBorder;
-  }
-  .sort-icon {
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: inherit;
-    -webkit-font-smoothing: antialiased;
-
-  /* sprites.less reset */
-    display: inline;
-    width: auto;
-    height: auto;
-    line-height: normal;
-    vertical-align: baseline;
-    background-image: none;
-    background-position: 0% 0%;
-    background-repeat: repeat;
-    margin-top: 0;
-    margin-left: 8px;
-    text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
-  }
-  th.header:hover,
-  th.header:active,
-  th.header:focus,
-  th.headerSortDown,
-  th.headerSortUp {
-    #gradient > .vertical(darken(@tableHeaderBackground, 5%), darken(@tableHeaderBackground, 15%))
-  };
-  th .sort-icon:before {
-    content: "\f0dc";
-    opacity: 0.35;
-  }
-  th.headerSortDown .sort-icon:before {
-    content: "\f0d7";
-    opacity: 1;
-    color:#c6f788;
-  }
-  th.headerSortUp .sort-icon:before {
-    content: "\f0d8";
-    opacity: 1;
-    color:#c6f788;
-  }
-
   // Bottom align for column headings
   thead th {
     vertical-align: bottom;
@@ -149,69 +48,10 @@ table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
+
   // Nesting
   .table {
     background-color: @bodyBackground;
-  }
-  // CAM STYLES
-  .first-column {
-    padding-left: 12px;
-  }
-  .last-column {
-      padding-right: 12px;
-  }
-  .date-column {
-    min-width: 90px;
-    max-width: 90px;
-  }
-  .drawer-btn {
-    width: 1px;
-    padding-right: 0px;
-  }
-  .drawer-btn div {
-    display: block;
-    margin-top: 1px;
-    height: 16px;
-    width: 16px;
-    color: #333;
-    border: 1px solid #e3e3e3;
-    .border-radius(3px);
-    background: #fff;
-  }
-  tr:hover .drawer-btn div,
-  tr:active .drawer-btn div,
-  tr:focus .drawer-btn div {
-    border: 1px solid #ccc;
-    #gradient > .vertical(@tableBackgroundAccent, darken(@tableBackgroundAccent, 5%))
-  }
-  .drawer-btn div span.icon-caret-right {
-    display: block;
-    padding: 1px 0px 0px 6px;
-  }
-  .drawer-btn div span.icon-caret-down {
-    display: block;
-    padding: 1px 0px 0px 4px;
-  }
-  .details-row > td {
-    padding-top: 20px;
-    padding-bottom: 12px;
-  }
-  .details-row table {
-    width:auto;
-  }
-  .details-row table th {
-    font-weight: bold;
-  }
-  .details-row table th,
-  .details-row table td {
-    color: @grayDark;
-    background: none;
-    padding:4px 70px 4px 0px;
-    border: 0;
-  }
-  tr.odd > td,
-  tr.odd + tr[id*="info"] td {
-    background: @tableBackgroundAccent;
   }
 }
 
@@ -326,16 +166,11 @@ table {
 // HOVER EFFECT
 // ------------
 // Placed here since it has to come after the potential zebra striping
-
-// CAM ADDED THIS STYLE
 .table-hover {
   tbody {
-    tr.odd:hover,
-    tr.even:hover {
-      > td,
-      + tr[id*="info"] td {
-      background-color: #e0f5d0;
-      }
+    tr:hover > td,
+    tr:hover > th {
+      background-color: @tableBackgroundHover;
     }
   }
 }
@@ -407,54 +242,3 @@ table th[class*="span"],
     background-color: darken(@infoBackground, 5%);
   }
 }
-
-
-// for invoice line items
-.table-form {
-  width: 100%;
-}
-.table-form td select{
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  line-height: 20px;
-  background: #fff;
-}
-.table-form td select,
-.table-form td input
-{
-  margin: 0;
-  border-radius: 0;
-}
-.table-form td input{
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  width: 100%;
-}
-.table-form .fixed-width1,
-.table-form .fixed-width1 select {
-  width: 100px;
-}
-.table-form .fixed-width2 {
-  width: 150px;
-}
-
-#totals td {
-  padding: 0px 7px;
-}
-
-// styles for .drawer class
-.drawer,
-#form-drawer .container-fluid {
-  padding:20px;
-}
-.table-drawer form,
-#form-drawer form {
-  margin: 0px;
-}
-
-
-
