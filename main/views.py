@@ -22,11 +22,13 @@ def dashboard(request, template='dashboard.html', section='dashboard'):
     today = datetime.date.today()
     week_ago = datetime.datetime.now() + datetime.timedelta(days=-7)
 
+    current_temperature = TemperatureData.objects.all().order_by('-taken_at')[0]
+
     current_brew = list(Brew.objects.filter(complete_date__isnull=True)[:1])
 
     if current_brew:
         current_brew = current_brew[0]
-        data = TemperatureData.objects.filter(date__gte=week_ago, brew=current_brew)
+        data = TemperatureData.objects.filter(taken_at__gte=week_ago, brew=current_brew)
     else:
         brew_form = BrewForm()
 

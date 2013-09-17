@@ -1,1 +1,1 @@
-*/1 * * * * /home/pi/.virtualenvs/fermenter/bin/python /home/pi/Fermenter/manage.py checkTemperature &> /dev/null
+*/1 * * * * /home/pi/Fermenter/env/bin/python /home/pi/Fermenter/manage.py checkTemperature &> /dev/null

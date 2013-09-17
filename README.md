@@ -18,6 +18,8 @@ To find out how to install Rasbian Wheezy refer to the instructions on http://ww
     sudo pip install virtualenv virtualenvwrapper
     echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
     source /usr/local/bin/virtualenvwrapper.sh
+    sudo modprobe w1-gpio
+    sudo modprobe w1-therm
 
 
 ### Install Fermenter Web Application ###

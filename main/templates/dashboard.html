@@ -22,8 +22,14 @@
 		<button type="button" class="btn" id="finish-beer">Finish This Brew</button>
 	</div>
 	<p>Started on: {{current_brew.start_date}}</p>
+
+	<h2>Current Temperature:</h2>
+	<strong>{{current_temperature.temperature}} degrees Celcius taken at {{current_temperature.taken_at}}</strong>
+
+<!--
 	<h2>Chart of Temperatures</h2>
 	<div id="temp-chart"></div>
+-->
 	<h2>Notes:</h2>
 	<pre>{{current_brew.notes}}</pre>
 

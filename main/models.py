@@ -13,7 +13,7 @@ class Brew(models.Model):
 
 
 class TemperatureData(models.Model):
-    date = models.DateField(auto_now_add=True)
+    taken_at = models.DateTimeField(auto_now_add=True)
     temperature = models.FloatField()
     target = models.FloatField()
     brew = models.ForeignKey(Brew)

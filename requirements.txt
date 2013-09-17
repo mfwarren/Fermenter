@@ -1,3 +1,5 @@
-django==1.5.1
+django==1.5.4
 south
 gunicorn
+supervisor
+rpi.gpio>=0.5.3a

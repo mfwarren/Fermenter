@@ -26,8 +26,6 @@ def mean_std_dev(durations):
     for duration in durations:
         std = std + (duration - mean) ** 2
     std = sqrt(std / float(length))
-    mean = int(round(mean))
-    std = int(round(std))
     return mean, std
 
 
@@ -42,14 +40,15 @@ def read_current_temperature():
     NOTE: Temperature is in Celsius
     """
     temperatures = []
-    for i in xrange(0,10):
-        lines = read_temp_raw():
+    for i in xrange(0,3):
+        lines = read_temp_raw()
         while lines[0].strip()[-3:] != 'YES':
             time.sleep(0.2)
             lines = read_temp_raw()
         equals_pos = lines[1].find('t=')
         if equals_pos != -1:
             temp_string = lines[1][equals_pos+2:]
+            print temp_string
             temperatures.append(float(temp_string) / 1000.0)
         time.sleep(0.1)
     mean, std = mean_std_dev(temperatures)
